@@ -1,0 +1,61 @@
+:root {
+    --color1: #c52525;
+    --red-shade1: #d12828;
+    --red-shade2: #ab2020;
+    --red-shade3: #851919;
+    --red-shade4: #450d0d;
+    --color2: #00005b;
+    --blue-shade1: #0000e8;
+    --blue-shade2: #0000a8;
+    --blue-shade3: #000069;
+    --blue-shade4: #000042;
+    --color3: #c5c5c5;
+    --gray-shade1: #d1d1d1;
+    --gray-shade2: #ababab;
+    --gray-shade3: #858585;
+    --gray-shade4: #454545;
+    --television-width: 230px;
+    --television-height: 220px;
+    --television-bgcolor: #D12828;
+    --television-bgcolor-dark: #00005B;
+    --antenna-gradient: linear-gradient(to top, #0000A8 10%, #0000E8 25% 40%, #00005B 70%, #2224 90%);
+}
+
+
+body {
+    background-color: #292727;
+}
+
+* .welcome-section .left-side .typing {
+    color: var(--color3) !important;
+}
+
+
+* .welcome-section .left-side p {
+    color: var(--color3) !important;
+}
+
+* .welcome-section .left-side a button {
+    color: var(--color3);
+}
+
+* .welcome-section .right-side .tv:hover {
+    box-shadow: -30px 30px 30px var(--gray-shade4);
+}
+
+* .about-section .left-side p {
+    color: var(--color3);
+}
+
+* .container .card::before,
+* .container .card::after {
+    background-color: #222;
+}
+
+* .container .sponser-title h1{
+    color: var(--color3);
+}
+
+* .container .about-section .left-side h1{
+    color: var(--color3);
+}
