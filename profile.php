@@ -4,7 +4,7 @@ include 'nav.php';
 if (!isset($_SESSION['id'])) {
     header("location:login.php");
 }
-
+// $user_id ="0d16b8d0-b33b-11ef-b323-b132fe447446";
 $user_id = $_SESSION['id']; 
 // select attendance
 $select = "SELECT * FROM `attendance` 
@@ -20,6 +20,7 @@ $fetch_user = mysqli_fetch_assoc($run_select_user);
 if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
     $image = basename($_FILES['image']['name']);
     $tmp_name = $_FILES['image']['tmp_name'];
+
     //  unique file name
     $fileExt = pathinfo($image, PATHINFO_EXTENSION);
     $newFileName = "user_" . $user_id . "_" . time() . "." . $fileExt;
@@ -74,7 +75,8 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
                         <div class="profile__info">
                             <!-- han3ml echo le el name/workshop hna lma na5od el database -->
                             <h1 class="cssanimation typing " id="spicialstyle"><?php echo $data['first_name']."  ". $data['last_name'] ?> </h1>
-                            <h3 class="cssanimation typing"><?php echo $data['workshop'] ?></h3>
+                            
+                            <h3 class="cssanimation typing"><?php echo $data['workshop']."".$data['committee'] ?></h3>
                         </div>
                         <?php } ?>
                     </div>
@@ -85,6 +87,9 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
 </form>
 
 <!----attendance table -->
+<?php foreach ($run_select_user as $data2) { ?>
+    <?php if($data['role'] == 'Participant'){ ?>
+        
 <h1 class="title_courses">Your Attendance</h1>
 
 <section>
@@ -130,6 +135,14 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
                 ?>
             </tbody>
         </table>
+        <?php } else { ?>
+            <h1 class="title_courses">Your Attendance</h1>
+    <h2 class="cssanimation typing" id="member">There Is No Attendance For Members</h2>
+
+    <?php } ?>
+        
+        <?php  } ?>
+
         <?php if (isset($_SESSION['id'])) { ?>
             <button name="logout" class="logout-btn" type="submit">
                 Logout
