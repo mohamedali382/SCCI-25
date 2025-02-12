@@ -152,60 +152,61 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
 </section>
 
 <!--links Section -->
-<h1 class="title_courses">Your Courses</h1>
+<h1 class="title_courses"> Courses</h1>
 <section class="cards-section">
 
     <div class="card-item">
-        <h3>php</h3>
-        <p>Explore more about Resource 1.</p>
-        <a href="https://example.com/link1">Go to Resource</a>
-    </div>
-
-
-    <div class="card-item">
-        <h3>JS</h3>
-        <p>Learn about Resource 2 in detail.</p>
+        <h3>DEVOLOGY </h3>
+        <p>Find information about PROGRAMMING </p>
         <a href="#" target="_blank">Go to Resource</a>
     </div>
 
 
     <div class="card-item">
-        <h3>CSS</h3>
-        <p>Find information about Resource 3.</p>
+        <h3>APP SPLASH </h3>
+        <p>Find information about APP SPLASH</p>
+        <a href="#" target="_blank">Go to Resource</a>
+    </div>
+
+
+    <div class="card-item">
+        <h3>TECHSOLVE</h3>
+        <p>Find information about TECHSOLVE</p>
+        <a href="" target="_blank">Go to Resource</a>
+    </div>
+
+    <div class="card-item">
+        <h3>INVESTENUER</h3>
+        <p>Find information about INVESTENUER</p>
         <a href="#" target="_blank">Go to Resource</a>
     </div>
 
     <div class="card-item">
-        <h3>node JS</h3>
-        <p>Find information about Resource 3.</p>
+        <h3>MARKETIVE</h3>
+        <p>Find information about MARKETIVE</p>
         <a href="#" target="_blank">Go to Resource</a>
     </div>
 
     <div class="card-item">
-        <h3>react</h3>
-        <p>Find information about Resource 3.</p>
+        <h3>MOBLIE CRAFT</h3>
+        <p>Find information about MOBLIE CRAFT</p>
         <a href="#" target="_blank">Go to Resource</a>
     </div>
 
     <div class="card-item">
-        <h3>html</h3>
-        <p>Find information about Resource 3.</p>
+        <h3>MEDIA PRODUCTION</h3>
+        <p>Find information about MEDIA PRODUCTION.</p>
         <a href="#" target="_blank">Go to Resource</a>
     </div>
 
     <div class="card-item">
-        <h3>node js part 2</h3>
-        <p>Find information about Resource 3.</p>
-        <a href="#" target="_blank">Go to Resource</a>
-    </div>
-
-    <div class="card-item">
-        <h3>js part 2</h3>
-        <p>Find information about Resource 3.</p>
+        <h3>LOGISTIC</h3>
+        <p>Find information about  <br> LOGISTIC</p>
         <a href="#" target="_blank">Go to Resource</a>
     </div>
 
 </section>
+
 
 <!-- footer -->
 
