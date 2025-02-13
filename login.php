@@ -52,7 +52,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- links -->
-    <link rel="shortcut icon" href="img/SCCI.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/scci logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/login.css">
     <title>login</title>
 </head>
