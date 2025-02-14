@@ -137,7 +137,7 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
         </table>
         <?php } else { ?>
             <h1 class="title_courses">Your Attendance</h1>
-    <h2 class="cssanimation typing" id="member">There Is No Attendance For Members</h2>
+    <h2 class="cssanimation typing" id="member">  انت ميمبر معندكش حضور يا قلب أخوك </h2>
 
     <?php } ?>
         
