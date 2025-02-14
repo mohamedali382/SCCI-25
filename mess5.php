@@ -39,7 +39,7 @@
             if (i < message.length) {
                 document.getElementById("live-message").textContent += message.charAt(i);
                 i++;
-                setTimeout(typeMessage, 100);  
+                setTimeout(typeMessage, 60);  
             } else {
                 setTimeout(redirectToNewPage, 1000);  
             }
