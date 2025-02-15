@@ -1,28 +1,18 @@
 <?php
 include("connection.php");
-$error_msg = "";
-$email = ""; 
-$password = "";
-$remember = "";
-if (isset($_POST['login'])) {
-    // SQL INJECTION
-    $email=mysqli_real_escape_string($connect,$_POST['email']);
-    $password=mysqli_real_escape_string($connect,$_POST['password']);
-    // Check if 'Remember Me' is checked
+// $error_msg = "";
+// $email = ""; 
+// $password = "";
+// $remember = "";
+//  // Check if 'Remember Me' is checked
+//     header('Content-Type: application/json');
+// // Decode the incoming JSON data
+// $data = json_decode(file_get_contents("php://input"), true);
+// echo json_encode($data);
+
     if (isset($_POST['remember'])) {
         $remember = $_POST['remember'];
     }
-    $select = "SELECT * FROM `users` WHERE `email` = '$email'";
-    $run_select = mysqli_query($connect, $select);
-    $rows = mysqli_num_rows($run_select);
-    if ($rows > 0) {
-        $fetch = mysqli_fetch_assoc($run_select);
-        $hashed_password = $fetch['password'];
-
-        // Verify password
-        if (password_verify($password, $hashed_password)) {
-            $user_id = $fetch['id'];
-            $_SESSION['id'] = $user_id; 
             // If 'Remember Me' is checked, set cookies for 1 year
             if (isset($_POST['remember'])) {
                 setcookie("remember_email", $email, time() + 3600 * 24 * 365); 
@@ -34,18 +24,13 @@ if (isset($_POST['login'])) {
                 setcookie("remember_password", "", time() - 3600); 
                 setcookie("remember", "", time() - 3600);
             }
-            // Redirect to Home page after successful login
-            header("Location:profile.php");
-            exit();
+//             // header("Location:profile.php");
             
-        } else {
-            $error_msg = "Password incorrect";  
-        }
-    } else {
-        $error_msg = "Incorrect email";
-    }
-}
+            
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +72,7 @@ if (isset($_POST['login'])) {
                 Remember me
             </label>
             <!-- Login button -->
-            <button  type="submit" class="btn" name="login">
+            <button  type="submit" class="btn" name="login" id="loginbutton">
             <span class="shadow"></span>
             <span class="edge"></span>
             <span class="front text"> Login</span>
@@ -96,21 +81,41 @@ if (isset($_POST['login'])) {
     </div>
     <!-- Popup error message -->
     <div id="popup" class="popup"></div>
-    <script>
-        // JavaScript for error message
-        const errormsg = "<?php echo $error_msg; ?>";
-        if (errormsg) {
-            const popup = document.getElementById("popup");
-            popup.innerText = errormsg;
-            popup.style.display = "block";
-            popup.style.marginTop = "-35px";
 
-            // Fade out the popup after 5 seconds
-            setTimeout(() => {
-                popup.style.opacity = "0";
-                setTimeout(() => { popup.style.display = "none"; }, 500);
-            }, 5000);
+</body>
+</html>
+<script> 
+        function callApi(method, url, data){
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
         }
+
+        const loginButton = document.getElementById('loginbutton');
+        loginButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('logemail').value;
+            const password = document.getElementById('logpass').value;
+            const data = {
+                email: email,
+                password: password
+            }
+            callApi('POST', 'https://scci25.site/app/25/api/auth/login', data);
+            // callApi('GET', 'https://scci25.site/app/25/api/auth/profile', data);
+        });
     </script>
 </body>
 </html>
