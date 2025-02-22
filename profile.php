@@ -4,8 +4,9 @@ include 'nav.php';
 if (!isset($_SESSION['id'])) {
     header("location:login.php");
 }
-// $user_id ="0d16b8d0-b33b-11ef-b323-b132fe447446";
-$user_id = $_SESSION['id']; 
+
+$user_id = $_SESSION['id'];
+// Fetch user data using $userId
 // select attendance
 $select = "SELECT * FROM `attendance` 
     JOIN `sessionday` ON `sessionday`.`id` = `attendance`.`session_id` 
@@ -45,11 +46,10 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- links -->
-    <script src="https://kit.fontawesome.com/567d267f56.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="./css/profile.css">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"> 
-        <link rel="icon" href="./img/SCCI.png" > 
-        
+     <script src="https://kit.fontawesome.com/567d267f56.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/profile.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"> 
+    <link rel="shortcut icon" href="./img/scci_logo.png" type="image/x-icon">
     <title>Profile</title>
 </head>
 <body>
@@ -83,6 +83,7 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
                 </div>
     
 <?php } ?>
+
 
 </form>
 
@@ -143,13 +144,17 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
         
         <?php  } ?>
 
-        <?php if (isset($_SESSION['id'])) { ?>
-            <button name="logout" class="logout-btn" type="submit">
-                Logout
-            </button>
-        <?php } ?>
+      
     </form>
+
 </section>
+<?php if (isset($_SESSION['id'])) { ?>
+    <form action="login.php" method="POST">
+        <button name="logout" class="logout-btn" type="submit">
+            Logout
+        </button>
+    </form>
+<?php } ?>
 
 <!--links Section -->
 <h1 class="title_courses"> Courses</h1>
@@ -207,7 +212,6 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
 
 </section>
 
-
 <!-- footer -->
 
 
@@ -216,5 +220,7 @@ if (isset($_POST["save"]) && isset($_FILES['image']['name'])) {
 
 <script src="./js/main.js"></script>
 <script src="./js/profile.js"></script>
+
+
 
 </html>

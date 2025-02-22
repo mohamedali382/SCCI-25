@@ -28,7 +28,7 @@ include("connection.php");
             <li><a href="workshop.php">Workshops</a></li>
             <li><a href="gallery.php">Gallery</a></li>
 
-            <?php if (!isset($_SESSION['user_id'])) { ?>
+            <?php if (isset($_SESSION['user_id'])) { ?>
                 <li><a href="login.php">Login In</a></li>
             <?php } else { ?>
                 <li><a href="profile.php">Profile</a></li>

@@ -1,18 +1,33 @@
 <?php
 include("connection.php");
-// $error_msg = "";
-// $email = ""; 
-// $password = "";
-// $remember = "";
-//  // Check if 'Remember Me' is checked
-//     header('Content-Type: application/json');
-// // Decode the incoming JSON data
-// $data = json_decode(file_get_contents("php://input"), true);
-// echo json_encode($data);
+$error_msg = "";
+$email = ""; 
+$password = "";
+$remember = "";
 
+if (isset($_SESSION['id'])) {
+    header("location:home.php");
+}
+
+if (isset($_POST['login'])) {
+    // SQL INJECTION
+    $email=mysqli_real_escape_string($connect,$_POST['email']);
+    $password=mysqli_real_escape_string($connect,$_POST['hash_password']);
+    // Check if 'Remember Me' is checked
     if (isset($_POST['remember'])) {
         $remember = $_POST['remember'];
     }
+    $select = "SELECT * FROM `users` WHERE `email` = '$email'";
+    $run_select = mysqli_query($connect, $select);
+    $rows = mysqli_num_rows($run_select);
+    if ($rows > 0) {
+        $fetch = mysqli_fetch_assoc($run_select);
+        $hashed_password = $fetch['hash_password'];
+
+        // Verify password
+        if (password_verify($password, $hashed_password)) {
+            $user_id = $fetch['id'];
+            $_SESSION['id'] = $user_id; 
             // If 'Remember Me' is checked, set cookies for 1 year
             if (isset($_POST['remember'])) {
                 setcookie("remember_email", $email, time() + 3600 * 24 * 365); 
@@ -24,13 +39,18 @@ include("connection.php");
                 setcookie("remember_password", "", time() - 3600); 
                 setcookie("remember", "", time() - 3600);
             }
-//             // header("Location:profile.php");
+            // Redirect to Home page after successful login
+            header("Location:profile.php");
+            exit();
             
-            
+        } else {
+            $error_msg = "Password incorrect";  
+        }
+    } else {
+        $error_msg = "Incorrect email";
+    }
+}
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +81,7 @@ include("connection.php");
                 <svg class="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
                     <path d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"></path>
                 </svg>
-                <input autocomplete="off" id="logpass" class="input-field" name="password" type="password"
+                <input autocomplete="off" id="logpass" class="input-field" name="hash_password" type="password"
                     value="<?php echo !empty($password) ? $password : (isset($_COOKIE['remember_password']) ? $_COOKIE['remember_password'] : ''); ?>" 
                     placeholder="Enter Your Password" required>
             </div>
@@ -72,7 +92,7 @@ include("connection.php");
                 Remember me
             </label>
             <!-- Login button -->
-            <button  type="submit" class="btn" name="login" id="loginbutton">
+            <button  type="submit" class="btn" name="login">
             <span class="shadow"></span>
             <span class="edge"></span>
             <span class="front text"> Login</span>
@@ -81,41 +101,21 @@ include("connection.php");
     </div>
     <!-- Popup error message -->
     <div id="popup" class="popup"></div>
+    <script>
+        // JavaScript for error message
+        const errormsg = "<?php echo $error_msg; ?>";
+        if (errormsg) {
+            const popup = document.getElementById("popup");
+            popup.innerText = errormsg;
+            popup.style.display = "block";
+            popup.style.marginTop = "-35px";
 
-</body>
-</html>
-<script> 
-        function callApi(method, url, data){
-            fetch(url, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            })
+            // Fade out the popup after 5 seconds
+            setTimeout(() => {
+                popup.style.opacity = "0";
+                setTimeout(() => { popup.style.display = "none"; }, 500);
+            }, 5000);
         }
-
-        const loginButton = document.getElementById('loginbutton');
-        loginButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            const email = document.getElementById('logemail').value;
-            const password = document.getElementById('logpass').value;
-            const data = {
-                email: email,
-                password: password
-            }
-            callApi('POST', 'https://scci25.site/app/25/api/auth/login', data);
-            // callApi('GET', 'https://scci25.site/app/25/api/auth/profile', data);
-        });
     </script>
 </body>
 </html>
