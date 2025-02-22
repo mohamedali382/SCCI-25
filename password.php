@@ -1,7 +1,7 @@
 <?php
 include "connection.php";
 
-$new_password = "1234";  
+$new_password = "scciweb";  
 $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
 $select = "SELECT `id` FROM `users`";
