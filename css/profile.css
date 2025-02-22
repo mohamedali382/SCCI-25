@@ -350,3 +350,21 @@ font-size: 1em;
     width: 95%; 
   }
 }
+
+@keyframes typing {
+  0% {
+      width: 0;
+  }
+  50% {
+      width: 100%;
+  }
+  100% {
+      width: 0;
+  }
+}
+
+.cssanimation.typing {
+  overflow: hidden;
+  border-right: 0.15em solid red ; 
+  animation: typing 7s steps(30, end) infinite;
+}
