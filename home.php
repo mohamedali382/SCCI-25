@@ -39,8 +39,9 @@
 
             <div class="left-side">
                 <div>
-                    <h1 class="cssanimation typing sequence">Welcome To SCCI</h1>
+                    <h1 class="cssanimation typing sequence">Welcome To <span class="priv">SCCI<span></h1>
                 </div>
+                <br>
                 <p>
                     <span>
                         SCCIians
