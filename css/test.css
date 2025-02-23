@@ -17,10 +17,6 @@ body {
 .images {
   pointer-events: none;
   height: 100vh;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
   position: absolute;
   opacity: 0.6;
   z-index: 20;
@@ -29,7 +25,6 @@ body {
   background-repeat: none;
   background-image: url("https://static.comicvine.com/uploads/original/11124/111240517/4986890-4700382785-29908.jpg");
 }
-
 .wrapper {
   height: 100vh;
   display: flex;
@@ -44,14 +39,33 @@ body {
 .logo:hover .restart {
   opacity: 0.8;
 }
-
 .restart {
-  color: #fff;
-  margin-top: 20px;
-  font-size: 1.5rem;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #e12835;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-size: 30px;
   text-transform: uppercase;
-  letter-spacing: -0.08rem;
-  transition: opacity 150ms linear;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.restart:hover {
+  background-color: #be2633;
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.restart:active {
+  transform: scale(0.95);
+}
+
+a{
+  text-decoration: none;
 }
 
 .marvel, .studios {
