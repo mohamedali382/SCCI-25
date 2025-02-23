@@ -6,4 +6,8 @@
 
 -edit footer and links 
 
+-crew page error 
+
+-logo title in some pages 
+
 
