@@ -10,4 +10,19 @@
 
 -logo title in some pages 
 
+-page el landing 
+
+
+**3mlna edit fe **
+
+page el home 
+
+nav
+
+crew
+
+
+
+
+
 
