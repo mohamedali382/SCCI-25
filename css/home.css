@@ -57,11 +57,30 @@
   border-right: 2px solid #7E2EA0;
   animation: typing 2.5s steps(12, end), 0.2s steps(12, end) infinite;
 }
+.priv{
+  color:  #c52525;
+}
 @keyframes typing {
   0% {
-    width: 0%;
+      width: 0;
+  }
+  50% {
+      width: 100%;
+  }
+  100% {
+      width: 0;
   }
 }
+
+.cssanimation.typing.sequence {
+  overflow: hidden;
+  border-right: 0.15em solid  #c52525 ; 
+  animation: typing 7s steps(30, end) infinite;
+}
+
+
+
+
 @keyframes cursor {
   50% {
     border-color: transparent;
@@ -277,7 +296,7 @@
   width: 15em;
   height: 11.85em;
   border: 3px solid rgba(255, 255, 255, 0.231372549);
-  background-image: url(../img/SCCI_Logo.png);
+  background-image: url(../images/SCCI_Logo.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
