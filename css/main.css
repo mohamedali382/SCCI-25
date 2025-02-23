@@ -87,7 +87,56 @@ header ul li a {
 header ul li a:hover {
   color: aliceblue;
   transition: 1s;
+  
+  
 }
+
+@keyframes underline {
+  from {
+      width: 0;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+
+header ul li a {
+  position: relative;
+  text-decoration: none;
+  color: #C5C5C5;
+  font-weight: 500;
+  font-size: larger;
+}
+
+header ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: rgb(205, 20, 20);
+  transition: width 0.4s ease;
+  -webkit-transition: width 0.4s ease;
+}
+
+header ul li a:hover::after {
+  width: 100%;
+  left: 0;
+  background: aliceblue;
+}
+
+
+
+
+
+
+
+
+
+
 @media (min-width: 860px) {
   header ul .contactUs {
     width: 15%;
