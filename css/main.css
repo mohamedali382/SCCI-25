@@ -100,7 +100,6 @@ header ul li a:hover {
   }
 }
 
-
 header ul li a {
   position: relative;
   text-decoration: none;
@@ -127,15 +126,6 @@ header ul li a:hover::after {
   left: 0;
   background: aliceblue;
 }
-
-
-
-
-
-
-
-
-
 
 @media (min-width: 860px) {
   header ul .contactUs {
