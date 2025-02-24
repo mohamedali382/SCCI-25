@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Workshops</title>
-    <link rel="icon" href="./img/SCCI.png">
+    <link rel="icon" href="./img/SCCI_Logo.png">
     <link rel="stylesheet" href="./css/messagee.css">
 </head>
 <body>
