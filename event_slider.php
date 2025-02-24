@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Slider</title>
     <link rel="stylesheet" href="./css/event_slider.css">
+        <link rel="icon" href="./img/SCCI_Logo.png">
+
 </head>
 
 <body>
