@@ -6,6 +6,8 @@
 
 -edit footer and links 
 
+-n7ot el events f page el events slider
+
 -our-crew page 
 
 -logo title in some pages 
